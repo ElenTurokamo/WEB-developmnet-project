@@ -7,11 +7,10 @@ header {
 
 body {
   background-image:
-    linear-gradient(to right, rgba(14, 134, 212, 0.85), rgba(0, 48, 96, 0.9)),
-    url("../img/misc/111111.jpg");
-     background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+    linear-gradient(to right, rgba(7, 92, 148, 0.85), rgba(0, 23, 45, 0.9)), url("../img/misc/111111.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     overflow-x: hidden;
     margin: 0;
     height: 100%;
@@ -376,3 +375,24 @@ footer p {
 .news-block::-webkit-scrollbar {
     width: 8px;
 }
+
+/* Плейсхолдер для теста скролла */
+.placeholderForScroll {
+  width: 100%;
+  height: 600px; /* можно регулировать по необходимости */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 48, 96, 0.6),
+    rgba(14, 134, 212, 0.3)
+  );
+  margin: 40px 0;
+  border-radius: 10px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/* При наведении — немного подсвечивается (для наглядности при тесте) */
+.placeholderForScroll:hover {
+  opacity: 0.6;
+}
+
