@@ -376,10 +376,9 @@ footer p {
     width: 8px;
 }
 
-/* Плейсхолдер для теста скролла */
 .placeholderForScroll {
   width: 100%;
-  height: 600px; /* можно регулировать по необходимости */
+  height: 600px;
   background: linear-gradient(
     to bottom,
     rgba(0, 48, 96, 0.6),
@@ -391,8 +390,46 @@ footer p {
   transition: opacity 0.3s ease;
 }
 
-/* При наведении — немного подсвечивается (для наглядности при тесте) */
 .placeholderForScroll:hover {
   opacity: 0.6;
 }
+
+/* КНОПКА ПРОКРУТКИ НАВЕРХ */
+#scrollToTopButton {
+  position: fixed;
+  bottom: 5%;
+  right: 30px;
+  z-index: 99;
+  display: none; 
+  
+  background: linear-gradient(135deg, #0078ff, #003060);
+  color: #fff;
+  border: none;
+  border-radius: 45%;
+  width: 140px;
+  height: 70px;
+  
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#scrollToTopButton:hover {
+  background: linear-gradient(135deg, #005fcc, #002850);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+  #scrollToTopButton {
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
 
