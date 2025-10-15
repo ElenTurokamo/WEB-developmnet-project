@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/img/misc/relation.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUROKAMO</title>
+</head>
+<body>
+  <div class="page-wrapper">
+
+  <!-- ШАПКА -->
+    <header>
+      <a href="index.html">
+        <img class="site-icon"src="/img/misc/relation.png">
+      </a>
+
+      <a href="index.html" class="logo">TUROKAMO</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="portfolio.html">PORTFOLIO</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li><a href="anotherbutton.html">Coming soon...</a></li>
+        </ul>
+      </nav>
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search in news...">
+        <button onclick="searchRecipes()" class="find">Find</button>
+    </div>
+    </header>
+
+    <div class="main-content">
+
+    <!-- ГАЛЕРЕЯ-СКРОЛЛЕР -->
+    <section class="image-marquee">
+      <div class="marquee-content" id="gallery">
+      </div>
+    </section>
+
+    <!-- БЛОК С ОБНОВЛЕНИЯМИ --> 
+    <section class="news-block">
+      <div class="news-content" id="news-list">
+      </div>
+    </section>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО -->
+  <div id="news-modal" class="news-modal">
+    <div class="news-modal-box">
+      <span class="close-btn" onclick="closeNewsModal()">&times;</span>
+      <div id="news-modal-content"></div>
+    </div>
+  </div>
+
+    
+  <!-- ПОДВАЛ -->
+    <div class="footer">
+      <footer>
+        <h1>Subscription on updates:</h1>
+        <input placeholder="Enter your email">
+        <button>Подписаться</button>
+        
+        <p>&copy; 2025 Turokamo Prod. CO</p>
+
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+
+        <h3>Contact information:</h3>
+        <div>
+          <h4>Email:</h4>
+          <button
+          class="footer-contact-item"
+          onclick="copyText('240368@turan-edu.kz')">240368@turan-edu.kz</button>
+        </div>
+        <div>
+          <h4>Phone:</h4>
+          <button
+          class="footer-contact-item"
+          onclick="copyText('+78005553535')">+7 (800) 555 - 35 - 35</button>
+        </div>
+        <div>
+          <h4>Adress:</h4>
+          <button
+          class="footer-contact-item"
+          onclick="copyText('Time square st.Monten A45, New York, USA')">Time square st.Monten A45, New York, USA</button>
+        </div>
+
+        
+      </footer>
+    </div>
+
+  <!-- JAVA SCRIPT -->
+    <script src="news-block.js"></script>
+    <script src="main-scroller.js"></script>
+    <script src="footer.js"></script>
+    <script src="search-bar.js"></script>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,374 @@
+header {
+    background-color: #003060;
+    background-image: linear-gradient(to right, #0E86D4, #003060);
+    padding: 20px;
+    text-align: center;
+}
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+    margin: 0;
+    height: 100%;
+}
+
+.logo {
+    font-family: 'Courier New', monospace;
+    font-size: 48px;
+    letter-spacing: 10px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.site-icon {
+    height: 5%;
+    width: 5%;
+    filter: invert(1);
+}
+
+.content {
+    flex: 1;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.search {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Поле ввода */
+.search input {
+  padding: 12px 16px;
+  background-color: #f5f7fa;
+  border: 2px solid #0078ff;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  color: #003060;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.search input:focus {
+  border-color: #005fcc;
+  box-shadow: 0 0 6px rgba(0, 120, 255, 0.3);
+}
+
+/* Кнопка поиска */
+.search .find {
+  padding: 12px 24px;
+  background-color: #0078ff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search .find:hover {
+  background-color: #005fcc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 95, 204, 0.4);
+}
+
+.search .find:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Адаптивность */
+@media (max-width: 500px) {
+  .search {
+    grid-template-columns: 1fr;
+  }
+  .search .find {
+    width: 100%;
+  }
+}
+
+
+
+.find {
+    border: none;
+    background-color:  rgb(252, 242, 255);
+    color: rgb(122, 122, 122);
+    padding: 10px 0;
+    cursor: pointer;
+    width: 100%;      
+    box-sizing: border-box;
+}
+
+/* ПОДВАЛ */
+footer {
+  background-color: #003060;
+  color: #fff;
+  width: 100%;
+  padding: 40px 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Левая часть — подписка */
+footer h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+footer input {
+  padding: 10px 15px;
+  border-radius: 8px 0 0 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+}
+
+footer button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0078ff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+footer button:hover {
+  background-color: #005fcc;
+  transform: translateY(-2px);
+}
+
+/* Контактные данные справа */
+footer h3 {
+  margin-top: 0;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+footer div {
+  margin-bottom: 10px;
+}
+
+footer h4 {
+  margin: 5px 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Кнопки контактов */
+.footer-contact-item {
+  background-color: #004080;
+  border-radius: 6px;
+  padding: 8px 14px;
+  margin-top: 4px;
+  transition: 0.3s;
+}
+
+.footer-contact-item:hover {
+  background-color: #0058b0;
+}
+
+/* Позиционирование копирайта */
+footer p {
+  position: absolute;
+  bottom: 10px;
+  left: 60px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+  }
+
+  footer p {
+    position: static;
+    margin-top: 20px;
+  }
+}
+
+
+/* Контейнер для галереи и новостей */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    flex: 1;
+}
+
+/*ГАЛЕРЕЯ СКРОЛЛЕР*/
+.image-marquee {
+    width: 60%;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    /* background: rgb(102, 76, 109); */
+    padding: 20px 0;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 20px;
+    animation: scroll-left 5s linear infinite;
+}
+
+.marquee-content img {
+    height: 150px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-54%);
+    }
+}
+
+
+/*БЛОК НОВОСТЕЙ*/
+.news-block {
+    flex: 1 1 35%;
+    background: #003060;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    height: 170px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: 'Courtier New', monospace;
+    
+}
+
+/* Каждая новость */
+.news-content .news-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.news-content .news-item:last-child {
+    border-bottom: none;
+}
+
+.news-item {
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.2s;
+}
+.news-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Модальное окно */
+.news-modal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.news-modal-box {
+  background: #055C9D;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  color: white;
+  font-family: 'Courier New', monospace;
+  overflow-y: auto;
+  max-height: 80%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.news-modal-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.news-modal-box::-webkit-scrollbar-track {
+  background: #003060;
+  border-radius: 10px;
+}
+
+.news-modal-box::-webkit-scrollbar-thumb {
+  background: #68BBE3;
+  border-radius: 10px;
+}
+
+.news-block::-webkit-scrollbar-track {
+  background: #003060;
+  border-radius: 10px;
+}
+
+.news-block::-webkit-scrollbar-thumb {
+  background: #68BBE3;
+  border-radius: 10px;
+}
+.news-block::-webkit-scrollbar {
+    width: 8px;
+}
