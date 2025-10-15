@@ -1,7 +1,7 @@
 // Скрипт, отвечающий за визуализацию галереи-скроллера
 // на главной странице сайта.
 
-const imageFolder = "img/gallery";
+const imageFolder = "../img/gallery";
 const imageFiles = ["1.png", "2.png", "3.png"];
 const gallery = document.getElementById("gallery");
 

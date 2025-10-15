@@ -1,5 +1,7 @@
+// Скрипт, отвечающий за отображение блока новостей на главной странице сайта.
+
 async function loadNews() {
-  const response = await fetch("news-data.json");
+  const response = await fetch("../json/news-data.json");
   const newsList = await response.json();
 
   const container = document.getElementById("news-list");

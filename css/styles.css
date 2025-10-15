@@ -6,7 +6,12 @@ header {
 }
 
 body {
-    background-color: black;
+  background-image:
+    linear-gradient(to right, rgba(14, 134, 212, 0.85), rgba(0, 48, 96, 0.9)),
+    url("../img/misc/111111.jpg");
+     background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
     overflow-x: hidden;
     margin: 0;
     height: 100%;
@@ -125,8 +130,6 @@ nav a {
   }
 }
 
-
-
 .find {
     border: none;
     background-color:  rgb(252, 242, 255);
@@ -136,6 +139,7 @@ nav a {
     width: 100%;      
     box-sizing: border-box;
 }
+
 
 /* ПОДВАЛ */
 footer {
