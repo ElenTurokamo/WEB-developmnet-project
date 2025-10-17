@@ -38,17 +38,64 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchContainer = document.querySelector(".search");
-  const searchInput = searchContainer.querySelector("input");
-  const searchButton = searchContainer.querySelector(".search-icon");
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.querySelector(".search-icon");
   const navList = document.querySelector(".nav-list");
+  const newsItems = document.querySelectorAll(".news-item");
 
+  // Анимация открытия/закрытия поиска
   searchButton.addEventListener("click", () => {
     searchContainer.classList.toggle("active");
     navList.classList.toggle("hide");
+
     if (searchContainer.classList.contains("active")) {
       searchInput.focus();
     } else {
       searchInput.value = "";
+      resetNews();
     }
   });
+
+  // Запуск поиска по Enter
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      searchRecipes();
+    }
+  });
+
+  // Основная функция поиска
+  function searchRecipes() {
+    const filter = searchInput.value.trim().toLowerCase();
+
+    if (filter === "") {
+      resetNews();
+      return;
+    }
+
+    let found = false;
+
+    newsItems.forEach((item) => {
+      const title =
+        item.querySelector("h2")?.textContent.toLowerCase() ||
+        item.querySelector("a")?.textContent.toLowerCase() ||
+        "";
+
+      if (title.includes(filter)) {
+        item.style.display = "";
+        found = true;
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    if (!found) {
+      console.log("Новость не найдена");
+    }
+  }
+
+  // Сброс фильтра — показать все новости
+  function resetNews() {
+    newsItems.forEach((item) => (item.style.display = ""));
+  }
 });
