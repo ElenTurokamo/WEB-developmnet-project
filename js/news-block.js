@@ -1,7 +1,5 @@
-// --- Глобальный массив для хранения новостей ---
 let allNews = [];
 
-// --- Загрузка новостей при старте ---
 async function loadNews() {
   try {
     const response = await fetch("../json/news-data.json");
@@ -12,7 +10,6 @@ async function loadNews() {
   }
 }
 
-// --- Отрисовка новостей в контейнер ---
 function renderNews(newsArray) {
   const container = document.getElementById("news-list");
   container.innerHTML = "";
@@ -34,7 +31,6 @@ function renderNews(newsArray) {
   });
 }
 
-// --- Поиск по JSON ---
 function searchNews(query) {
   const lowerQuery = query.trim().toLowerCase();
   if (lowerQuery === "") {
@@ -49,7 +45,6 @@ function searchNews(query) {
   renderNews(filtered);
 }
 
-// --- Открытие новости ---
 function openNewsModal(news) {
   const modal = document.getElementById("news-modal");
   const modalContent = document.getElementById("news-modal-content");
@@ -72,12 +67,10 @@ function openNewsModal(news) {
   modal.style.display = "flex";
 }
 
-// --- Закрытие модального окна ---
 function closeNewsModal() {
   document.getElementById("news-modal").style.display = "none";
 }
 
-// --- Логика поиска и анимации поля ---
 document.addEventListener("DOMContentLoaded", () => {
   loadNews();
 
@@ -86,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.querySelector(".search-icon");
   const navList = document.querySelector(".nav-list");
 
-  // Анимация открытия/закрытия поиска
   searchButton.addEventListener("click", () => {
     searchContainer.classList.toggle("active");
     navList.classList.toggle("hide");
@@ -99,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Поиск по Enter
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -108,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// --- Закрытие модалки клавишей Esc ---
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeNewsModal();
