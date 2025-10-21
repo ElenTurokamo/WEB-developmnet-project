@@ -237,7 +237,7 @@ header {
   gap: 24px;
 }
 
-/* --- Логотип и бренд --- */
+/* --- Логотип и бренд ---
 .brand {
   font-family: "P22 Cusp Square";
   font-size: 60px;
@@ -251,7 +251,7 @@ header {
 
 .brand:hover {
   filter: invert(44%) sepia(95%) saturate(747%) hue-rotate(174deg) brightness(94%) contrast(101%);
-}
+} */
 
 
 .site-icon {
