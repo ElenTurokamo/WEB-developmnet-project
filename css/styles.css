@@ -211,6 +211,7 @@ header {
   border-radius: 20px;
   opacity: 0.35;
   transition: opacity 0.3s ease;
+  margin: 20px 50px 20px 50px;
 }
 
 .left-placeholder:hover {
@@ -220,7 +221,7 @@ header {
 /* === БЛОК НОВОСТЕЙ — АДАПТИРОВАН ДЛЯ РЯДА === */
 .bottom-content .news-block {
   flex: 1 1 35%;
-  margin: 0;
+  margin: 20px 50px 20px 50px;
 }
 
 /* === АДАПТИВ === */
@@ -719,7 +720,7 @@ header {
   opacity: 1;
   transition: transform 0.3s ease;
   display: flex;         
-  align-items: center;         /* выравниваем содержимое по центру */
+  align-items: center;        
   justify-content: center;
   margin: 20px 50px 20px 50px;
 }
@@ -731,24 +732,33 @@ header {
 
 
 .projectSlideLeft {
-  width: 60%;                  /* видео занимает часть блока */
+  width: 60%;             
   max-width: 900px;
-  aspect-ratio: 16 / 9;        /* сохраняет пропорции видео */
+  aspect-ratio: 16 / 9;   
+  border-radius: 20%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transform: translateX(-40%);
 }
 
 .projectSlideRight {
-  width: 60%;                  /* видео занимает часть блока */
+  width: 60%;              
   max-width: 900px;
-  aspect-ratio: 16 / 9;        /* сохраняет пропорции видео */  
+  aspect-ratio: 16 / 9;    
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transform: translateX(40%);
 }
 
-.projectSlideLeft .projectSlideRight iframe {
-  border-radius: 20%;  
+.projectSlideLeft,
+.projectSlideRight {
+  width: 60%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* -------------------------------------
           ПЛЕЙСХОЛДЕР ПУСТЫШКА 
@@ -761,6 +771,7 @@ header {
   border-radius: 14px;
   opacity: 0.35;
   transition: opacity 0.3s ease;
+  margin: 20px 50px 20px 50px;
 }
 
 .placeholderForScroll:hover {
@@ -774,9 +785,9 @@ header {
   right: 40px;
   z-index: 99;
   display: none;
-  background: #111;
-  color: #fff;
-  border: 1px solid #68bbe3;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
   border-radius: 50%;
   width: 58px;
   height: 58px;
@@ -786,8 +797,8 @@ header {
 }
 
 #scrollToTopButton:hover {
-  background: #68bbe3;
-  color: #111;
+  background: #9be3ff;
+  color: #ffffff;
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(104, 187, 227, 0.4);
 }
