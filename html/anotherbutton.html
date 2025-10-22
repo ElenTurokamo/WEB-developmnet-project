@@ -1,89 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="/img/misc/relation.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../img/misc/site-icon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TUROKAMO</title>
 </head>
 <body>
+  <div class="page-wrapper">
 
-<!-- ШАПКА -->
-    <header>
-      <a href="index.html">
-        <img class="site-icon"src="/img/misc/relation.png">
-      </a>
 
-      <a href="index.html" class="logo">TUROKAMO</a>
-      <nav>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="portfolio.html">PORTFOLIO</a></li>
-          <li><a href="gallery.html">GALLERY</a></li>
-          <li><a href="anotherbutton.html">Coming soon...</a></li>
-        </ul>
-      </nav>
-      <div class="search">
-        <input type="text" placeholder="Search...">
-        <button class="find">Find</button>
-      </div>
-    </header>
+<header class="site-header">
+  <nav class="nav">
+        <a href="index.html"><img class="site-icon" src="/img/misc/logo.png" alt="logo"></a>
+    <!-- <a class="brand" href="index.html">TUROKAMO</a> -->
 
-  <!-- ГАЛЕРЕЯ-СКРОЛЛЕР -->
-  <section class="image-marquee">
-    <div class="marquee-content" id="gallery">
 
+    <ul class="nav-list">
+      <li><a href="/index.html">HOME</a></li>
+      <li><a href="/html/portfolio.html">PORTFOLIO</a></li>
+      <li><a href="/html/gallery.html">GALLERY</a></li>
+      <li><a href="/html/anotherbutton.html">Coming soon...</a></li>
+      <li><a class="contact-cta" href="240368@turan-edu.kz">Contact Me</a></li>
+    </ul>
+
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="Search in news...">
+      <button class="search-icon" aria-label="Search">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
     </div>
-  </section>
-
-<!-- ПОДВАЛ -->
-  <footer>
-    <p>&copy; 2025 Turokamo Prod. CO</p>
-  </footer>
-
-<!-- JAVA SCRIPT -->
-  <script src="script.js"></script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </nav>
+</header>
