@@ -9,29 +9,105 @@
 </head>
 <body>
   <div class="page-wrapper">
-
-<header class="site-header">
-  <nav class="nav">
-        <a href="index.html"><img class="site-icon" src="/img/misc/logo.png" alt="logo"></a>
-    <!-- <a class="brand" href="index.html">TUROKAMO</a> -->
+    <header class="site-header">
+      <nav class="nav">
+            <a href="index.html"><img class="site-icon" src="/img/misc/logo.png" alt="logo"></a>
 
 
-    <ul class="nav-list">
-      <li><a href="/index.html">HOME</a></li>
-      <li><a href="/html/portfolio.html">PORTFOLIO</a></li>
-      <li><a href="/html/gallery.html">GALLERY</a></li>
-      <li><a href="/html/anotherbutton.html">Coming soon...</a></li>
-      <li><a class="contact-cta" href="240368@turan-edu.kz">Contact Me</a></li>
-    </ul>
+        <ul class="nav-list">
+          <li><a href="/index.html">HOME</a></li>
+          <li><a href="/html/portfolio.html">PORTFOLIO</a></li>
+          <li><a href="/html/gallery.html">GALLERY</a></li>
+          <li><a href="/html/anotherbutton.html">Coming soon...</a></li>
+          <li><a class="contact-cta" href="240368@turan-edu.kz">Contact Me</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
 
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="Search in news...">
-      <button class="search-icon" aria-label="Search">
-        <svg viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </button>
-    </div>
-  </nav>
-</header>
+
+<!-- ================== -->
+<!--  ОСНОВНОЙ КОНТЕНТ  -->
+<!-- ================== -->
+
+    <section class="portfolio-back" id="portfolioSection">
+      <div class="portfolio-content">
+        <!-- Left side: Album Art Block -->
+        <div class="portfolio-left">
+          <div class="album-art-container">
+            <img class="album-art" src="/img/portfolio/album-1.jpg" alt="Album Art" />
+          </div>
+        </div>
+
+        <!-- Center: Vinyl record -->
+        <div class="portfolio-center">
+          <div class="vinyl-record" id="vinylRecord">
+            <div class="vinyl-circle"></div>
+            <div class="vinyl-label">
+              <img src="/img/misc/weather-icon.png" alt="Weather Bot Icon" class="label-icon">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side: Project details and controls -->
+        <div class="portfolio-right">
+          <div class="project-info">
+            <p class="portfolio-subtitle">By Turokamo</p>
+            <h1 class="project-title" id="projectTitle">Deus weather</h1>
+            <p class="project-description" id="projectDescription">Weather bot in Telegram</p>
+          </div>
+
+          <div class="media-controls">
+            <button class="control-btn prev-btn" id="prevBtn" aria-label="Previous">
+              <span>⏮</span>
+            </button>
+            <button class="control-btn play-btn" id="playBtn" aria-label="Play">
+              <span>▶</span>
+            </button>
+            <button class="control-btn next-btn" id="nextBtn" aria-label="Next">
+              <span>⏭</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Portfolio data structure -->
+  <script>
+    const portfolioData = [
+      {
+        id: 1,
+        title: 'Deus weather',
+        description: 'Weather bot in Telegram',
+        albumArt: '/img/portfolio/album-1.png',
+        backgroundImage: '/img/portfolio/bg-1.png',
+        labelIcon: '/img/misc/weather-icon.png',
+        audioUrl: '/audio/deus-weather.mp3'
+      },
+      {
+        id: 2,
+        title: 'Project Two',
+        description: 'Description for project two',
+        albumArt: '/img/portfolio/album-2.jpg',
+        backgroundImage: '/img/portfolio/bg-2.jpg',
+        labelIcon: '/img/misc/icon-2.png',
+        audioUrl: '/audio/project-two.mp3'
+      },
+      {
+        id: 3,
+        title: 'Project Three',
+        description: 'Description for project three',
+        albumArt: '/img/portfolio/album-3.jpg',
+        backgroundImage: '/img/portfolio/bg-3.jpg',
+        labelIcon: '/img/misc/icon-3.png',
+        audioUrl: '/audio/project-three.mp3'
+      }
+    ];
+
+    let currentProjectIndex = 0;
+  </script>
+
+  <script src="../js/portfolio-animation.js"></script>
+</body>
+</html>
