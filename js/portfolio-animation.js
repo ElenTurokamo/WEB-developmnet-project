@@ -3,6 +3,12 @@
  * Обрабатывает сложные анимации для обложки альбома, виниловой пластинки и переходов контента
  */
 
+// Внешняя библиотека для извлечения основного цвета с изображения (предполагаем, что она доступна)
+// Для работы этого кода потребуется библиотека, такая как 'color-thief' или аналогичная,
+// которую нужно будет подключить в HTML: <script src="path/to/color-thief.min.js"></script>
+// В рамках этой задачи я буду использовать упрощенный подход, предполагая, что основной цвет
+// можно извлечь или что он будет указан в данных проекта (portfolioData).
+
 class PortfolioAnimationManager {
   constructor() {
     this.currentIndex = 0;
@@ -20,6 +26,7 @@ class PortfolioAnimationManager {
     this.prevBtn = document.getElementById('prevBtn');
     this.nextBtn = document.getElementById('nextBtn');
     this.playBtn = document.getElementById('playBtn');
+    this.albumArtGlow = document.querySelector('.album-art-glow'); // Добавляем элемент свечения
     
     this.init();
   }
@@ -55,9 +62,30 @@ class PortfolioAnimationManager {
     
     // Обновление фона
     this.updateBackground(project.backgroundImage);
+
+    // Извлечение цвета и обновление свечения
+    // ПРИМЕЧАНИЕ: Для реального извлечения цвета потребуется библиотека.
+    // Здесь мы предполагаем, что цвет либо задан в данных, либо используем заглушку.
+    // Для демонстрации используем заглушку, но в реальном проекте нужно использовать ColorThief.
+    const glowColor = project.glowColor || 'rgba(0, 191, 255, 0.8)'; 
+    this.updateGlowColor(glowColor);
     
     // Обновление аудио
     this.audioElement.src = project.audioUrl;
+  }
+
+  /**
+   * Обновляет цвет свечения на основе основного цвета обложки
+   */
+  updateGlowColor(color) {
+    if (this.albumArtGlow) {
+      // Предполагаем, что цвет передается в формате RGBA или HEX
+      // Обновляем box-shadow для .album-art-glow
+      this.albumArtGlow.style.boxShadow = `
+        0 0 15px 5px ${color},
+        0 0 30px 10px ${color.replace('0.8', '0.4') || color}
+      `;
+    }
   }
 
   /**
@@ -135,6 +163,9 @@ class PortfolioAnimationManager {
     this.vinylRecord.classList.remove('spinning');
     this.vinylRecord.classList.add('stop-spin', 'enter-album');
     
+    // Анимация свечения: уходит вместе с обложкой
+    this.albumArtGlow.classList.add('exit-to-left');
+    
     // Шаг 2: Альбом уходит влево (начинается немедленно, длительность 0.6с)
     this.albumArtContainer.classList.add('exit-to-left');
     
@@ -147,6 +178,10 @@ class PortfolioAnimationManager {
       this.albumArtContainer.classList.remove('exit-to-left');
       this.albumArtContainer.classList.add('enter-from-right');
       
+      // Анимация свечения: входит вместе с обложкой
+      this.albumArtGlow.classList.remove('exit-to-left');
+      this.albumArtGlow.classList.add('enter-from-right');
+
       // Сброс классов пластинки и добавление анимации выхода
       this.vinylRecord.classList.remove('stop-spin', 'enter-album');
       this.vinylRecord.classList.add('exit-album');
@@ -154,6 +189,7 @@ class PortfolioAnimationManager {
       // Шаг 4: Еще через 0.3с (всего 0.9с) пластинка снова начинает вращаться
       setTimeout(() => {
         this.albumArtContainer.classList.remove('enter-from-right');
+        this.albumArtGlow.classList.remove('enter-from-right'); // Сброс класса свечения
         this.vinylRecord.classList.remove('exit-album');
         this.vinylRecord.classList.add('spinning');
         
@@ -172,6 +208,9 @@ class PortfolioAnimationManager {
     // Остановка пластинки и ее вход в альбом
     this.vinylRecord.classList.remove('spinning');
     this.vinylRecord.classList.add('stop-spin', 'enter-album');
+
+    // Анимация свечения: уходит вместе с обложкой
+    this.albumArtGlow.classList.add('exit-to-left');
     
     // Альбом уходит влево
     this.albumArtContainer.classList.add('exit-to-left');
@@ -180,6 +219,10 @@ class PortfolioAnimationManager {
     setTimeout(() => {
       this.albumArtContainer.classList.remove('exit-to-left');
       this.albumArtContainer.classList.add('enter-from-right');
+
+      // Анимация свечения: входит вместе с обложкой
+      this.albumArtGlow.classList.remove('exit-to-left');
+      this.albumArtGlow.classList.add('enter-from-right');
       
       this.vinylRecord.classList.remove('stop-spin', 'enter-album');
       this.vinylRecord.classList.add('exit-album');
@@ -187,6 +230,7 @@ class PortfolioAnimationManager {
       // Еще через 0.3с пластинка снова начинает вращаться
       setTimeout(() => {
         this.albumArtContainer.classList.remove('enter-from-right');
+        this.albumArtGlow.classList.remove('enter-from-right'); // Сброс класса свечения
         this.vinylRecord.classList.remove('exit-album');
         this.vinylRecord.classList.add('spinning');
         
@@ -198,5 +242,11 @@ class PortfolioAnimationManager {
 
 // Инициализация менеджера анимации, когда DOM готов
 document.addEventListener('DOMContentLoaded', () => {
+  // Добавляем заглушку для цвета в данные проекта, чтобы продемонстрировать смену цвета
+  // В реальном проекте здесь нужно будет использовать библиотеку для извлечения цвета.
+  portfolioData[0].glowColor = 'rgba(0, 191, 255, 0.8)'; // Синий
+  portfolioData[1].glowColor = 'rgba(255, 0, 0, 0.8)';   // Красный
+  portfolioData[2].glowColor = 'rgba(0, 255, 0, 0.8)';   // Зеленый
+
   new PortfolioAnimationManager();
 });
