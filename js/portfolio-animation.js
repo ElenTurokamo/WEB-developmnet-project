@@ -1,6 +1,6 @@
 /**
- * Portfolio Animation System
- * Handles complex animations for album art, vinyl record, and content transitions
+ * Система анимации портфолио
+ * Обрабатывает сложные анимации для обложки альбома, виниловой пластинки и переходов контента
  */
 
 class PortfolioAnimationManager {
@@ -10,7 +10,7 @@ class PortfolioAnimationManager {
     this.currentRotation = 0;
     this.audioElement = null;
     
-    // DOM Elements
+    // Элементы DOM
     this.portfolioSection = document.getElementById('portfolioSection');
     this.albumArtContainer = document.querySelector('.album-art-container');
     this.albumArt = document.querySelector('.album-art');
@@ -25,56 +25,56 @@ class PortfolioAnimationManager {
   }
 
   init() {
-    // Attach event listeners
+    // Привязка слушателей событий
     this.prevBtn.addEventListener('click', () => this.handlePrevious());
     this.nextBtn.addEventListener('click', () => this.handleNext());
     this.playBtn.addEventListener('click', () => this.handlePlayClick());
     
-    // Initialize audio element
+    // Инициализация аудиоэлемента
     this.audioElement = new Audio();
     this.audioElement.loop = true;
     
-    // Load initial project
+    // Загрузка начального проекта
     this.loadProject(this.currentIndex);
   }
 
   /**
-   * Load project data and update DOM
+   * Загружает данные проекта и обновляет DOM
    */
   loadProject(index) {
     if (index < 0 || index >= portfolioData.length) return;
     
     const project = portfolioData[index];
     
-    // Update text content
+    // Обновление текстового контента
     this.projectTitle.textContent = project.title;
     this.projectDescription.textContent = project.description;
     
-    // Update album art
+    // Обновление обложки альбома
     this.albumArt.src = project.albumArt;
     
-    // Update background
+    // Обновление фона
     this.updateBackground(project.backgroundImage);
     
-    // Update audio
+    // Обновление аудио
     this.audioElement.src = project.audioUrl;
   }
 
   /**
-   * Update background image with smooth transition
+   * Обновляет фоновое изображение с плавным переходом
    */
   updateBackground(imageUrl) {
-    // Create a temporary image to preload
+    // Создание временного изображения для предварительной загрузки
     const img = new Image();
     img.onload = () => {
       this.portfolioSection.style.backgroundImage = 
-        `linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(30, 30, 30, 0.9) 100%), url('${imageUrl}')`;
+        `url('${imageUrl}')`;
     };
     img.src = imageUrl;
   }
 
   /**
-   * Handle next button click
+   * Обработка нажатия кнопки "Далее"
    */
   handleNext() {
     if (this.isAnimating) return;
@@ -84,7 +84,7 @@ class PortfolioAnimationManager {
   }
 
   /**
-   * Handle previous button click
+   * Обработка нажатия кнопки "Назад"
    */
   handlePrevious() {
     if (this.isAnimating) return;
@@ -94,22 +94,22 @@ class PortfolioAnimationManager {
   }
 
   /**
-   * Handle play button click - stops vinyl and triggers transition
+   * Обработка нажатия кнопки "Воспроизвести" - останавливает пластинку и запускает переход
    */
   handlePlayClick() {
     if (this.isAnimating) return;
     
-    // Get current rotation angle from the vinyl record
+    // Получение текущего угла поворота с виниловой пластинки
     const computedStyle = window.getComputedStyle(this.vinylRecord);
     const transform = computedStyle.transform;
     this.currentRotation = this.getRotationFromTransform(transform);
     
-    // Trigger the vinyl stop and album transition
+    // Запуск остановки пластинки и перехода альбома
     this.triggerVinylToAlbumAnimation();
   }
 
   /**
-   * Extract rotation angle from transform matrix
+   * Извлечение угла поворота из матрицы преобразования
    */
   getRotationFromTransform(transform) {
     if (transform === 'none') return 0;
@@ -122,36 +122,36 @@ class PortfolioAnimationManager {
   }
 
   /**
-   * Main transition sequence
-   * 1. Vinyl stops and enters album
-   * 2. Album exits to left
-   * 3. New album enters from right
-   * 4. Vinyl exits album and starts spinning
+   * Основная последовательность перехода
+   * 1. Пластинка останавливается и входит в альбом
+   * 2. Альбом уходит влево
+   * 3. Новый альбом входит справа
+   * 4. Пластинка выходит из альбома и начинает вращаться
    */
   triggerTransition(nextIndex) {
     this.isAnimating = true;
     
-    // Step 1: Stop vinyl and make it enter the album (0.6s)
+    // Шаг 1: Остановка пластинки и ее вход в альбом (0.6с)
     this.vinylRecord.classList.remove('spinning');
     this.vinylRecord.classList.add('stop-spin', 'enter-album');
     
-    // Step 2: Album exits to left (starts immediately, 0.6s duration)
+    // Шаг 2: Альбом уходит влево (начинается немедленно, длительность 0.6с)
     this.albumArtContainer.classList.add('exit-to-left');
     
-    // Step 3: After 0.6s, new album enters from right and vinyl exits
+    // Шаг 3: Через 0.6с новый альбом входит справа, а пластинка выходит
     setTimeout(() => {
       this.currentIndex = nextIndex;
       this.loadProject(this.currentIndex);
       
-      // Reset album art classes and add entrance animation
+      // Сброс классов обложки альбома и добавление анимации входа
       this.albumArtContainer.classList.remove('exit-to-left');
       this.albumArtContainer.classList.add('enter-from-right');
       
-      // Reset vinyl classes and add exit animation
+      // Сброс классов пластинки и добавление анимации выхода
       this.vinylRecord.classList.remove('stop-spin', 'enter-album');
       this.vinylRecord.classList.add('exit-album');
       
-      // Step 4: After 0.3s more (0.9s total), vinyl starts spinning again
+      // Шаг 4: Еще через 0.3с (всего 0.9с) пластинка снова начинает вращаться
       setTimeout(() => {
         this.albumArtContainer.classList.remove('enter-from-right');
         this.vinylRecord.classList.remove('exit-album');
@@ -163,20 +163,20 @@ class PortfolioAnimationManager {
   }
 
   /**
-   * Vinyl to album animation (triggered by play button)
-   * Similar to transition but stays on current project
+   * Анимация "Пластинка в альбом" (запускается кнопкой воспроизведения)
+   * Аналогична переходу, но остается на текущем проекте
    */
   triggerVinylToAlbumAnimation() {
     this.isAnimating = true;
     
-    // Stop vinyl and make it enter the album
+    // Остановка пластинки и ее вход в альбом
     this.vinylRecord.classList.remove('spinning');
     this.vinylRecord.classList.add('stop-spin', 'enter-album');
     
-    // Album exits to left
+    // Альбом уходит влево
     this.albumArtContainer.classList.add('exit-to-left');
     
-    // After 0.6s, album comes back and vinyl exits
+    // Через 0.6с альбом возвращается, а пластинка выходит
     setTimeout(() => {
       this.albumArtContainer.classList.remove('exit-to-left');
       this.albumArtContainer.classList.add('enter-from-right');
@@ -184,7 +184,7 @@ class PortfolioAnimationManager {
       this.vinylRecord.classList.remove('stop-spin', 'enter-album');
       this.vinylRecord.classList.add('exit-album');
       
-      // After 0.3s more, vinyl starts spinning again
+      // Еще через 0.3с пластинка снова начинает вращаться
       setTimeout(() => {
         this.albumArtContainer.classList.remove('enter-from-right');
         this.vinylRecord.classList.remove('exit-album');
@@ -196,7 +196,7 @@ class PortfolioAnimationManager {
   }
 }
 
-// Initialize animation manager when DOM is ready
+// Инициализация менеджера анимации, когда DOM готов
 document.addEventListener('DOMContentLoaded', () => {
   new PortfolioAnimationManager();
 });

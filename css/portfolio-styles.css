@@ -158,6 +158,7 @@ header {
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  position: relative; /* Устанавливаем контекст позиционирования для .album-art-glow */
 }
 
 .album-art-container {
@@ -165,18 +166,29 @@ header {
   width: 600px;
   height: 600px;
   background: #ffffff;
-
   overflow: hidden;
   transform: translateY(17%) translateX(-100px);
-  z-index: 2;
+  z-index: 3; /* Обложка должна быть выше диска */
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); /* Оставляем основную тень */
 }
 
-.album-art-container::before {
-  content: "";
-  left: 20px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), /* Основная тень */
-  0 0 20px 2px rgba(255, 255, 255, 0.8); /* Мягкое внешнее свечение */
+.album-art-glow {
+  position: absolute;
+  /* Позиционируем относительно .portfolio-left */
+  top: 0; 
+  left: 0;
+  width: 600px;
+  height: 600px;
+  /* Применяем то же смещение, что и к обложке */
+  transform: translateY(17%) translateX(-100px);
+  /* Используем ваши стили свечения, но с синим цветом, который был на скриншоте */
+  box-shadow: 
+  0 0 15px 5px rgba(0, 191, 255, 0.6),
+  0 0 30px 10px rgba(0, 191, 255, 0.4);
+  z-index: 1; /* Свечение должно быть под диском */
+  pointer-events: none; /* Игнорировать клики */
 }
+
 
 
 .album-art {
@@ -235,7 +247,7 @@ header {
   width: 500px;
   height: 500px;
   animation: spin 20s linear infinite;
-
+  z-index: 2; /* Диск должен быть выше свечения */
 }
 
 .vinyl-record.spinning {
@@ -262,10 +274,6 @@ header {
   to {
     transform: rotateZ(0deg);
   }
-}
-
-.vinyl-record:hover {
-  animation-play-state: paused;
 }
 
 .vinyl-record.enter-album {
@@ -440,7 +448,11 @@ header {
   cursor: not-allowed;
 }
 
-/* Responsive Design */
+
+/* ==========================================
+      ЗДЕСЬ НАСТРОИТЬ АДАПТИВНОСТЬ
+========================================== */
+
 /* @media (max-width: 1200px) {
   .portfolio-content {
     padding: 0 40px;
