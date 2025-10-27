@@ -26,7 +26,7 @@ class PortfolioAnimationManager {
     this.prevBtn = document.getElementById('prevBtn');
     this.nextBtn = document.getElementById('nextBtn');
     this.playBtn = document.getElementById('playBtn');
-    this.albumArtGlow = document.querySelector('.album-art-glow'); // Добавляем элемент свечения
+    this.albumArtGlow = document.querySelector('.album-art-glow'); 
     
     this.init();
   }
@@ -101,9 +101,12 @@ class PortfolioAnimationManager {
     img.src = imageUrl;
   }
 
-  /**
-   * Обработка нажатия кнопки "Далее"
-   */
+
+  // ================================
+  //         КНОПКИ ДЕЙСТВИЙ
+  // ================================
+
+// Далее
   handleNext() {
     if (this.isAnimating) return;
     
@@ -111,9 +114,7 @@ class PortfolioAnimationManager {
     this.triggerTransition(nextIndex);
   }
 
-  /**
-   * Обработка нажатия кнопки "Назад"
-   */
+// Назад
   handlePrevious() {
     if (this.isAnimating) return;
     
@@ -121,24 +122,51 @@ class PortfolioAnimationManager {
     this.triggerTransition(prevIndex);
   }
 
-  /**
-   * Обработка нажатия кнопки "Воспроизвести" - останавливает пластинку и запускает переход
-   */
-  handlePlayClick() {
-    if (this.isAnimating) return;
-    
-    // Получение текущего угла поворота с виниловой пластинки
-    const computedStyle = window.getComputedStyle(this.vinylRecord);
+// Воспроизвести
+handlePlayClick() {
+  const record = this.vinylRecord;
+  if (!record) return;
+
+  // Если сейчас крутится — плавно останавливаем
+  if (this.isAnimating) {
+    const computedStyle = window.getComputedStyle(record);
     const transform = computedStyle.transform;
-    this.currentRotation = this.getRotationFromTransform(transform);
-    
-    // Запуск остановки пластинки и перехода альбома
-    this.triggerVinylToAlbumAnimation();
+    const currentRotation = this.getRotationFromTransform(transform);
+    const remainingRotation = 360 - (currentRotation % 360);
+
+    // Отключаем бесконечное вращение
+    record.style.animation = 'none';
+    record.style.setProperty('--current-rotation', `${currentRotation}deg`);
+    record.style.transform = `rotate(${currentRotation}deg)`;
+
+    // Плавно докручиваем остаток
+    record.style.transition = 'transform 0.4s ease-out';
+    record.offsetHeight; // форсируем перерисовку
+    record.style.transform = `rotate(${currentRotation + remainingRotation}deg)`;
+
+    setTimeout(() => {
+      record.style.transition = 'none';
+      record.classList.remove('spinning');
+      record.classList.add('stop-spin');
+      this.isAnimating = false;
+    }, 400);
   }
 
-  /**
-   * Извлечение угла поворота из матрицы преобразования
-   */
+  // Если не крутится — запускаем вращение
+  else {
+    record.classList.remove('stop-spin');
+    record.classList.add('spinning');
+    record.style.animation = 'spin 20s linear infinite';
+    record.style.transition = 'none';
+    this.isAnimating = true;
+  }
+}
+
+
+
+  // /**
+  //  * Извлечение угла поворота из матрицы преобразования
+  //  */
   getRotationFromTransform(transform) {
     if (transform === 'none') return 0;
     
@@ -148,6 +176,44 @@ class PortfolioAnimationManager {
     const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
     return angle < 0 ? angle + 360 : angle;
   }
+
+// stopVinylAnimation() {
+//   const record = this.vinylRecord;
+//   if (!record) return;
+
+//   // Получаем текущий угол
+//   const computedStyle = window.getComputedStyle(record);
+//   const transform = computedStyle.transform;
+//   const currentRotation = this.getRotationFromTransform(transform);
+
+//   // Сколько осталось до конца круга
+//   const remainingRotation = 360 - (currentRotation % 360);
+
+//   // Отключаем текущую бесконечную анимацию
+//   record.style.animation = 'none';
+
+//   // Устанавливаем текущий угол как старт
+//   record.style.transform = `rotate(${currentRotation}deg)`;
+
+//   // Добавляем плавную докрутку
+//   record.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+//   record.offsetHeight; // форсируем перерисовку
+
+//   // Запускаем плавный остаток
+//   record.style.transform = `rotate(${currentRotation + remainingRotation}deg)`;
+
+//   // После завершения останавливаем всё окончательно
+//   setTimeout(() => {
+//     record.style.transition = 'none';
+//     record.style.animation = 'none';
+//   }, 500);
+// }
+
+
+
+
+
+
 
   /**
    * Основная последовательность перехода
