@@ -244,7 +244,7 @@ class PortfolioAnimationManager {
 document.addEventListener('DOMContentLoaded', () => {
   // Добавляем заглушку для цвета в данные проекта, чтобы продемонстрировать смену цвета
   // В реальном проекте здесь нужно будет использовать библиотеку для извлечения цвета.
-  portfolioData[0].glowColor = 'rgba(0, 191, 255, 0.8)'; // Синий
+  portfolioData[0].glowColor = 'rgba(247, 253, 255, 0.1)'; // Синий
   portfolioData[1].glowColor = 'rgba(255, 0, 0, 0.8)';   // Красный
   portfolioData[2].glowColor = 'rgba(0, 255, 0, 0.8)';   // Зеленый
 

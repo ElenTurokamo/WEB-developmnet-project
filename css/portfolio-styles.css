@@ -391,9 +391,15 @@ header {
   color: rgba(255, 255, 255, 0.7);
   margin: 0 0 10px 0;
   text-transform: uppercase;
+  transform: translateX(-50px) translateY(120px) rotate(5deg);
+}
+
+.portfolio-subtitle:hover {
+  transform: translateX(-50px) translateY(120px) rotate(5deg) scale(1.1);
 }
 
 .project-title {
+  width: 400px;
   font-size: 48px;
   font-weight: 300;
   letter-spacing: 2px;
@@ -401,6 +407,7 @@ header {
   margin: 0;
   text-transform: capitalize;
   transition: opacity 0.3s ease;
+  transform: translateX(-300px) translateY(90px);
 }
 
 .project-description {
@@ -410,6 +417,7 @@ header {
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
   transition: opacity 0.3s ease;
+  transform: translateX(-255px) translateY(90px);
 }
 
 /* Media Controls */
@@ -417,6 +425,7 @@ header {
   display: flex;
   align-items: center;
   gap: 30px;
+  transform: translateX(-240px) translateY(70px);
 }
 
 .control-btn {
