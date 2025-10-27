@@ -129,6 +129,7 @@ handlePlayClick() {
 
   // Если сейчас крутится — плавно останавливаем
   if (this.isAnimating) {
+    this.playBtn.querySelector('span').textContent = '▶';
     const computedStyle = window.getComputedStyle(record);
     const transform = computedStyle.transform;
     const currentRotation = this.getRotationFromTransform(transform);
@@ -154,6 +155,7 @@ handlePlayClick() {
 
   // Если не крутится — запускаем вращение
   else {
+    this.playBtn.querySelector('span').textContent = '❚❚'; // Иконка паузы
     record.classList.remove('stop-spin');
     record.classList.add('spinning');
     record.style.animation = 'spin 20s linear infinite';
