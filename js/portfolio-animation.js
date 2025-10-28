@@ -179,92 +179,89 @@ handlePlayClick() {
     return angle < 0 ? angle + 360 : angle;
   }
 
-// stopVinylAnimation() {
-//   const record = this.vinylRecord;
-//   if (!record) return;
-
-//   // Получаем текущий угол
-//   const computedStyle = window.getComputedStyle(record);
-//   const transform = computedStyle.transform;
-//   const currentRotation = this.getRotationFromTransform(transform);
-
-//   // Сколько осталось до конца круга
-//   const remainingRotation = 360 - (currentRotation % 360);
-
-//   // Отключаем текущую бесконечную анимацию
-//   record.style.animation = 'none';
-
-//   // Устанавливаем текущий угол как старт
-//   record.style.transform = `rotate(${currentRotation}deg)`;
-
-//   // Добавляем плавную докрутку
-//   record.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-//   record.offsetHeight; // форсируем перерисовку
-
-//   // Запускаем плавный остаток
-//   record.style.transform = `rotate(${currentRotation + remainingRotation}deg)`;
-
-//   // После завершения останавливаем всё окончательно
-//   setTimeout(() => {
-//     record.style.transition = 'none';
-//     record.style.animation = 'none';
-//   }, 500);
-// }
-
-
-
-
-
 
 
   /**
-   * Основная последовательность перехода
-   * 1. Пластинка останавливается и входит в альбом
-   * 2. Альбом уходит влево
-   * 3. Новый альбом входит справа
-   * 4. Пластинка выходит из альбома и начинает вращаться
+   * Последовательность перехода:
+   * 1. Пластинка плавно останавливается
+   * 2. После остановки — уезжает влево (в альбом)
+   * 3. После этого альбом и свечение уходят влево
+   * 4. Новый альбом появляется справа
+   * 5. Новая пластинка выезжает справа и начинает крутиться
    */
   triggerTransition(nextIndex) {
+    if (this.isAnimating) return;
     this.isAnimating = true;
-    
-    // Шаг 1: Остановка пластинки и ее вход в альбом (0.6с)
-    this.vinylRecord.classList.remove('spinning');
-    this.vinylRecord.classList.add('stop-spin', 'enter-album');
-    
-    // Анимация свечения: уходит вместе с обложкой
-    this.albumArtGlow.classList.add('exit-to-left');
-    
-    // Шаг 2: Альбом уходит влево (начинается немедленно, длительность 0.6с)
-    this.albumArtContainer.classList.add('exit-to-left');
-    
-    // Шаг 3: Через 0.6с новый альбом входит справа, а пластинка выходит
-    setTimeout(() => {
-      this.currentIndex = nextIndex;
-      this.loadProject(this.currentIndex);
-      
-      // Сброс классов обложки альбома и добавление анимации входа
-      this.albumArtContainer.classList.remove('exit-to-left');
-      this.albumArtContainer.classList.add('enter-from-right');
-      
-      // Анимация свечения: входит вместе с обложкой
-      this.albumArtGlow.classList.remove('exit-to-left');
-      this.albumArtGlow.classList.add('enter-from-right');
 
-      // Сброс классов пластинки и добавление анимации выхода
-      this.vinylRecord.classList.remove('stop-spin', 'enter-album');
-      this.vinylRecord.classList.add('exit-album');
-      
-      // Шаг 4: Еще через 0.3с (всего 0.9с) пластинка снова начинает вращаться
+    const record = this.vinylRecord;
+    if (!record) return;
+
+    // === Шаг 1: Плавная остановка вращения ===
+    const computedStyle = window.getComputedStyle(record);
+    const transform = computedStyle.transform;
+    const currentRotation = this.getRotationFromTransform(transform);
+    const remainingRotation = 360 - (currentRotation % 360);
+
+    record.style.animation = 'none';
+    record.style.setProperty('--current-rotation', `${currentRotation}deg`);
+    record.style.transform = `rotate(${currentRotation}deg)`;
+
+    record.style.transition = 'transform 0.4s ease-out';
+    record.offsetHeight; // форсируем перерисовку
+    record.style.transform = `rotate(${currentRotation + remainingRotation}deg)`;
+
+    // После остановки
+    setTimeout(() => {
+      record.style.transition = 'none';
+      record.classList.remove('spinning');
+      record.classList.add('stop-spin');
+
+      // === Шаг 2: Пластинка уезжает влево (в альбом) ===
+      record.classList.add('enter-album'); // CSS-анимация выезда
+      record.style.transition = 'transform 0.6s ease-in-out';
+      record.style.transform = 'translateX(-200px) scale(0.8)'; // расстояние-заглушка
+
+      // После завершения уезда пластинки
       setTimeout(() => {
-        this.albumArtContainer.classList.remove('enter-from-right');
-        this.albumArtGlow.classList.remove('enter-from-right'); // Сброс класса свечения
-        this.vinylRecord.classList.remove('exit-album');
-        this.vinylRecord.classList.add('spinning');
-        
-        this.isAnimating = false;
-      }, 300);
-    }, 600);
+        // === Шаг 3: Альбом уходит влево ===
+        this.albumArtGlow.classList.add('exit-to-left');
+        this.albumArtContainer.classList.add('exit-to-left');
+
+        // После ухода альбома
+        setTimeout(() => {
+          // === Шаг 4: Новый альбом входит справа ===
+          this.currentIndex = nextIndex;
+          this.loadProject(this.currentIndex);
+
+          this.albumArtContainer.classList.remove('exit-to-left');
+          this.albumArtContainer.classList.add('enter-from-right');
+
+          this.albumArtGlow.classList.remove('exit-to-left');
+          this.albumArtGlow.classList.add('enter-from-right');
+
+          // === Шаг 5: Новая пластинка выезжает справа и начинает крутиться ===
+          record.style.transition = 'transform 0.6s ease-in-out';
+          record.style.transform = 'translateX(200px) scale(0.8)'; // старт справа
+          
+          // ждём кадр, чтобы применить переход
+          requestAnimationFrame(() => {
+            record.style.transform = 'translateX(0) scale(1)';
+          });
+
+          setTimeout(() => {
+            record.classList.remove('stop-spin', 'enter-album', 'exit-album');
+            record.style.transition = 'none';
+            record.classList.add('spinning');
+            record.style.animation = 'spin 20s linear infinite';
+            this.albumArtContainer.classList.remove('enter-from-right');
+            this.albumArtGlow.classList.remove('enter-from-right');
+            this.isAnimating = false;
+          }, 600);
+        }, 600); // время ухода альбома
+      }, 600); // время уезда пластинки
+    }, 400); // время плавной остановки
   }
+
 
   /**
    * Анимация "Пластинка в альбом" (запускается кнопкой воспроизведения)
