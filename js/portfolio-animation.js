@@ -257,9 +257,9 @@ handlePlayClick() {
             this.albumArtGlow.classList.remove('enter-from-right');
             this.isAnimating = false;
           }, 600);
-        }, 600); // время ухода альбома
+        }, 1000); // время ухода альбома
       }, 600); // время уезда пластинки
-    }, 400); // время плавной остановки
+    }, 0); // время плавной остановки
   }
 
 

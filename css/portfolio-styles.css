@@ -200,20 +200,20 @@ header {
 
 /* Album art entrance animation */
 .album-art-container.enter-from-right {
-  animation: albumEnterFromRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: albumEnterFromRight 0.6s ease-in-out forwards;
 }
 
 .album-art-glow.enter-from-right {
-  animation: albumEnterFromRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: albumEnterFromRight 0.6s ease-in-out forwards;
 }
 
 /* Album art exit animation */
 .album-art-container.exit-to-left {
-  animation: albumExitToLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: albumExitToLeft 0.6s ease-in-out forwards;
 }
 
 .album-art-glow.exit-to-left {
-  animation: albumExitToLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: albumExitToLeft 0.6s ease-in-out forwards;
 }
 
 @keyframes albumEnterFromRight {
