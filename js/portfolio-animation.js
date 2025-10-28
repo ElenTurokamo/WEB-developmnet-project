@@ -240,7 +240,7 @@ handlePlayClick() {
           this.albumArtGlow.classList.add('enter-from-right');
 
           // === Шаг 5: Новая пластинка выезжает справа и начинает крутиться ===
-          record.style.transition = 'transform 0.6s ease-in-out';
+          record.style.transition = 'transform 1s ease-in-out';
           record.style.transform = 'translateX(200px) scale(0.8)'; // старт справа
           
           // ждём кадр, чтобы применить переход

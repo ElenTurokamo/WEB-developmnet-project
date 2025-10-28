@@ -218,22 +218,22 @@ header {
 
 @keyframes albumEnterFromRight {
   from {
-    transform: translateX(500px);
+    transform: translateX(-500px) translateY(17%);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateX(0) translateY(17%);
     opacity: 1;
   }
 }
 
 @keyframes albumExitToLeft {
   from {
-    transform: translateX(0);
+    transform: translateX(0) translateY(17%);
     opacity: 1;
   }
   to {
-    transform: translateX(-500px);
+    transform: translateX(-500px) translateY(17%);
     opacity: 0;
   }
 }
