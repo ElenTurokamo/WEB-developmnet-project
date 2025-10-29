@@ -240,8 +240,9 @@ handlePlayClick() {
           this.albumArtGlow.classList.add('enter-from-right');
 
           // === Шаг 5: Новая пластинка выезжает справа и начинает крутиться ===
-          record.style.transition = 'transform 1s ease-in-out';
-          record.style.transform = 'translateX(200px) scale(0.8)'; // старт справа
+          setTimeout(() => {
+            record.style.transition = 'transform 1s ease-in-out';
+            record.style.transform = 'translateX(100px) scale(0.8)'; // старт справа
           
           // ждём кадр, чтобы применить переход
           requestAnimationFrame(() => {
@@ -256,7 +257,8 @@ handlePlayClick() {
             this.albumArtContainer.classList.remove('enter-from-right');
             this.albumArtGlow.classList.remove('enter-from-right');
             this.isAnimating = false;
-          }, 600);
+            }, 600);
+          }, 500);
         }, 1000); // время ухода альбома
       }, 600); // время уезда пластинки
     }, 0); // время плавной остановки
