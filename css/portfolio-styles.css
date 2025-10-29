@@ -200,20 +200,20 @@ header {
 
 /* Album art entrance animation */
 .album-art-container.enter-from-right {
-  animation: albumEnterFromRight 0.6s ease-in-out forwards;
+  animation: albumEnterFromRight 0.5s ease-in-out forwards;
 }
 
 .album-art-glow.enter-from-right {
-  animation: albumEnterFromRight 0.6s ease-in-out forwards;
+  animation: albumEnterFromRight 0.5s ease-in-out forwards;
 }
 
 /* Album art exit animation */
 .album-art-container.exit-to-left {
-  animation: albumExitToLeft 0.6s ease-in-out forwards;
+  animation: albumExitToLeft 0.5s ease-in-out forwards;
 }
 
 .album-art-glow.exit-to-left {
-  animation: albumExitToLeft 0.6s ease-in-out forwards;
+  animation: albumExitToLeft 0.5s ease-in-out forwards;
 }
 
 @keyframes albumEnterFromRight {
@@ -222,14 +222,14 @@ header {
     opacity: 0;
   }
   to {
-    transform: translateX(0) translateY(17%);
+    transform: translateX(-100px) translateY(17%);
     opacity: 1;
   }
 }
 
 @keyframes albumExitToLeft {
   from {
-    transform: translateX(0) translateY(17%);
+    transform: translateX(-100px) translateY(17%);
     opacity: 1;
   }
   to {
@@ -285,31 +285,31 @@ header {
 }
 
 .vinyl-record.enter-album {
-  animation: vinylEnterAlbum 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: vinylEnterAlbum 0.5s ease-in-out forwards;
 }
 
 .vinyl-record.exit-album {
-  animation: vinylExitAlbum 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: vinylExitAlbum 0.5s ease-in-out forwards;
 }
 
 @keyframes vinylEnterAlbum {
   from {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0);
     opacity: 1;
   }
   to {
-    transform: translate(-100px, 0) scale(0.8);
+    transform: translate(-400px, 0);
     opacity: 0;
   }
 }
 
 @keyframes vinylExitAlbum {
   from {
-    transform: translate (-100px, 0) scale(0.8);
+    transform: translate (-400px, 0);
     opacity: 0;
   }
   to {
-    transform: translate(0, 0) scale(1);
+    transform: translate(-400px, 0);
     opacity: 1;
   }
 }

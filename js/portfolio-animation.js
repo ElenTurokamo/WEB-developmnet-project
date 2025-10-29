@@ -219,13 +219,14 @@ handlePlayClick() {
       // === Шаг 2: Пластинка уезжает влево (в альбом) ===
       record.classList.add('enter-album'); // CSS-анимация выезда
       record.style.transition = 'transform 0.6s ease-in-out';
-      record.style.transform = 'translateX(-200px) scale(0.8)'; // расстояние-заглушка
+      record.style.transform = 'translateX(-300px)'; // расстояние-заглушка
 
       // После завершения уезда пластинки
       setTimeout(() => {
         // === Шаг 3: Альбом уходит влево ===
         this.albumArtGlow.classList.add('exit-to-left');
         this.albumArtContainer.classList.add('exit-to-left');
+        this.vinylRecord.classList.add('exit-to-left');
 
         // После ухода альбома
         setTimeout(() => {
@@ -242,7 +243,7 @@ handlePlayClick() {
           // === Шаг 5: Новая пластинка выезжает справа и начинает крутиться ===
           setTimeout(() => {
             record.style.transition = 'transform 1s ease-in-out';
-            record.style.transform = 'translateX(100px) scale(0.8)'; // старт справа
+            record.style.transform = 'translateX(-400px)'; // старт справа
           
           // ждём кадр, чтобы применить переход
           requestAnimationFrame(() => {
@@ -257,11 +258,11 @@ handlePlayClick() {
             this.albumArtContainer.classList.remove('enter-from-right');
             this.albumArtGlow.classList.remove('enter-from-right');
             this.isAnimating = false;
-            }, 600);
+            }, 500);
           }, 500);
-        }, 1000); // время ухода альбома
-      }, 600); // время уезда пластинки
-    }, 0); // время плавной остановки
+        }, 500); // время ухода альбома
+      }, 500); // время уезда пластинки
+    }, 500); // время плавной остановки
   }
 
 
