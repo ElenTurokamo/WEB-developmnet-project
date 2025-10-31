@@ -24,7 +24,7 @@ body {
   color: #0b0b0b;
   background-color: #fff;
   overflow-x: hidden;
-
+  
 }
 
 /* -------------------------------------
@@ -835,14 +835,38 @@ header {
 /* =========================================
               ТЁМНАЯ ТЕМА             
 ========================================= */
-.placeholder-top.dark-theme {
-  position: relative;
-  width: 100%;
-  height: 800px;
-  margin: 0;
-  background: linear-gradient(180deg, rgba(255, 135, 135, 0.4), rgba(255, 192, 192, 0.25));
-  overflow: hidden; 
-  display: grid;
-  justify-content: center;
+/* ТЕМНАЯ ТЕМА (теперь навешивается на body) */
+
+/* ТЕМНАЯ ТЕМА (теперь навешивается на body) */
+body.dark-theme .placeholder-top {
+  background: linear-gradient(180deg, rgba(20, 48, 75, 0.4), rgba(38, 71, 92, 0.25));
+}
+
+
+
+/* Базовый стиль кнопки */
+.change-theme {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #111;
+  border-radius: 40px;
+  padding: 8px 18px;
+  background: none;
+  transition: 0.3s ease;
+}
+
+/* Иконки */
+.icon-dark {
+  display: none;
+}
+
+/* При темной теме меняем иконку */
+body.dark-theme .icon-light {
+  display: none;
+}
+
+body.dark-theme .icon-dark {
+  display: block;
 }
