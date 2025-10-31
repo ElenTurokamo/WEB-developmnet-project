@@ -270,12 +270,12 @@ header {
   height: 100px;
   object-fit: contain;
   margin-left: 0px;
-  filter: invert(1);
-  transition: color 0.3s ease;
+  filter: brightness(100) invert(1) sepia(0) saturate(0) hue-rotate(0);
+  transition: filter 0.3s ease;
 }
 
 .site-icon:hover {
-  color: #007ea7;
+  filter: brightness(0) invert(100%) sepia(100%) saturate(500%) hue-rotate(120deg);
 }
 
 /* --- Навигация --- */
@@ -835,16 +835,10 @@ header {
 /* =========================================
               ТЁМНАЯ ТЕМА             
 ========================================= */
-/* ТЕМНАЯ ТЕМА (теперь навешивается на body) */
-
-/* ТЕМНАЯ ТЕМА (теперь навешивается на body) */
-body.dark-theme .placeholder-top {
-  background: linear-gradient(180deg, rgba(20, 48, 75, 0.4), rgba(38, 71, 92, 0.25));
+/* body.dark-theme .placeholder-top {
+  background: linear-gradient(180deg, rgba(50, 27, 3, 0.4), rgba(0, 0, 0, 0.9));
 }
 
-
-
-/* Базовый стиль кнопки */
 .change-theme {
   display: flex;
   align-items: center;
@@ -857,12 +851,10 @@ body.dark-theme .placeholder-top {
   transition: 0.3s ease;
 }
 
-/* Иконки */
 .icon-dark {
   display: none;
 }
 
-/* При темной теме меняем иконку */
 body.dark-theme .icon-light {
   display: none;
 }
@@ -870,3 +862,19 @@ body.dark-theme .icon-light {
 body.dark-theme .icon-dark {
   display: block;
 }
+
+body.dark-theme header {
+  background-color: rgba(50, 27, 3, 0.4);
+}
+
+body.dark-theme .nav-list a {
+  color: #1f1f1f;
+}
+
+body.dark-theme .nav-list a:hover {
+  color: rgb(156, 3, 26);
+}
+
+body.dark-theme #intro-screen {
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgb(29, 0, 0));
+} */
