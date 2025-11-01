@@ -486,6 +486,7 @@ header {
 .footer-right {
   flex: 1;
   min-width: 280px;
+  margin-left: 50%;
 }
 
 .footer-right h3 {
