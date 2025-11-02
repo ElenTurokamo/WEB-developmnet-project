@@ -177,16 +177,25 @@ body {
   display: block;
   transform-origin: center center;
   transform-style: preserve-3d;
-  transform: scale(1);
+  
+  /* вот они — наши переменные */
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  --scale: 1;
+
+  /* теперь transform фиксированный и безопасный */
+  transform: translateX(50%) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(var(--scale));
+
   transition:
     transform 0.15s ease-out,
     filter 0.4s ease;
-  animation: drop-glow-light 4s ease-in-out infinite;
+    animation: drop-glow-light 4s ease-in-out infinite;
 }
 
 
+
 .placeholder-top:hover .decorative-placeholder img {
-  filter: brightness(1);
+  filter: brightness(1) drop-shadow(0 50px 5px rgb(255, 0, 0));
   animation: drop-glow 2s ease-in-out infinite;
 }
 
@@ -470,7 +479,8 @@ header {
 }
 
 .footer-contact-item:hover {
-  color: #111;
+  color: #ffffff;
+  animation: drop-glow-light 4s ease-in-out infinite;
 }
 
 /* --- SOCIAL LINKS --- */
@@ -490,11 +500,12 @@ header {
   background-color: #fff;
   border: 1px solid #ddd;
   transition: all 0.3s ease;
+  animation: drop-glow-light 4s ease-in-out infinite;
 }
 
 .social-links a:hover {
-  background-color: #007ea7;
-  border-color: #007ea7;
+  animation: drop-glow-light 2s ease-in-out infinite, text-light 2s ease-in-out infinite;
+  transform: scale(1.1);
 }
 
 .social-links svg {
@@ -851,31 +862,31 @@ body.dark-theme #intro-screen {
   0% {
     filter: brightness(1)
             drop-shadow(0 10px 3px rgba(255, 116, 174, 0.5))
-            drop-shadow(0 15px 5px rgba(122, 255, 200, 0.5));
+            drop-shadow(0 15px 3px rgba(122, 255, 200, 0.5));
   }
 
   25% {
     filter: brightness(1)
             drop-shadow(0 10px 4px rgba(255, 182, 122, 0.5))
-            drop-shadow(0 15px 7px rgba(122, 255, 200, 0.5));
+            drop-shadow(0 15px 4px rgba(122, 255, 200, 0.5));
   }
 
   50% {
     filter: brightness(1)
             drop-shadow(0 10px 5px rgba(5, 114, 255, 0.5))
-            drop-shadow(0 15px 9px rgba(122, 228, 255, 0.5));
+            drop-shadow(0 15px 5px rgba(122, 228, 255, 0.5));
   }
 
   75% {
     filter: brightness(1)
             drop-shadow(0 10px 4px rgba(255, 182, 122, 0.5))
-            drop-shadow(0 15px 7px rgba(122, 255, 200, 0.5));
+            drop-shadow(0 15px 4px rgba(122, 255, 200, 0.5));
   }
 
   100% {
     filter: brightness(1)
             drop-shadow(0 10px 3px rgba(255, 116, 174, 0.5))
-            drop-shadow(0 15px 5px rgba(122, 255, 200, 0.5));
+            drop-shadow(0 15px 3px rgba(122, 255, 200, 0.5));
   }
 }
 
