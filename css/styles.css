@@ -27,6 +27,26 @@ body {
   
 }
 
+/* === ГЛОБАЛЬНЫЙ СТИЛЬ СКРОЛЛА === */
+html::-webkit-scrollbar {
+  width: 8px;         /* ширина вертикального скролла */
+  height: 8px;        /* высота горизонтального скролла (если появится) */
+}
+
+html::-webkit-scrollbar-track {
+  background: rgb(13, 12, 19);  /* фон трека */
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: 10px rgb(165, 165, 165);  /* сам ползунок */
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: 10px rgb(134, 134, 134);  /* цвет при наведении */
+}
+
 /* -------------------------------------
                   ИНТРО 
 -----------------------------------------*/
@@ -214,6 +234,7 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
   transition: all 0.3s ease;
+  border-bottom: solid 2px white;
 }
 
 .nav {
@@ -278,7 +299,7 @@ header {
   padding-bottom: 4px;   
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 1px;
   color: #ffffff;
   transition: opacity 0.3s, color 0.3s , transform 0.3s ease;
@@ -710,23 +731,7 @@ header {
 
 .close-btn:hover {
   color: #fff;
-}
-
-/* === СКРОЛЛ === */
-.news-modal-box::-webkit-scrollbar,
-.news-block::-webkit-scrollbar {
-  width: 8px;
-}
-.news-modal-box::-webkit-scrollbar-track,
-.news-block::-webkit-scrollbar-track {
-  background: #222;
-  border-radius: 10px;
-}
-.news-modal-box::-webkit-scrollbar-thumb,
-.news-block::-webkit-scrollbar-thumb {
-  background: #68bbe3;
-  border-radius: 10px;
-}
+} 
 
 /* -------------------------------------
         ПЛЕЙСХОЛДЕР БЛОК ПРОЕКТА 
