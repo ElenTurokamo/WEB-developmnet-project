@@ -27,7 +27,6 @@ body {
   
 }
 
-/* === ГЛОБАЛЬНЫЙ СТИЛЬ СКРОЛЛА === */
 html::-webkit-scrollbar {
   width: 8px;         /* ширина вертикального скролла */
   height: 8px;        /* высота горизонтального скролла (если появится) */
@@ -234,7 +233,7 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
   transition: all 0.3s ease;
-  border-bottom: solid 2px white;
+  border-bottom: solid 1px white;
 }
 
 .nav {
