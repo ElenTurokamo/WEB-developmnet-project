@@ -754,6 +754,12 @@ header {
   transform: translateY(-4px);
 }
 
+.greetingsPlaceholder {
+  position: relative; /* понадобится для псевдоэлемента */
+  overflow: hidden;   /* чтобы градиент не выходил за рамки */
+  background: linear-gradient(-120deg,rgba(255, 0, 111, 0.2) ,rgba(0, 221, 255, 0.2) , rgba(255, 128, 0, 0.2));
+}
+
 /* ===========================================
             ПРИВЕТСТВЕННЫЙ БЛОК
 =========================================== */
@@ -801,9 +807,7 @@ header {
     text-light 3s ease-in-out infinite;
 }
 
-/* ===========================================
-   Социальные ссылки (GitHub / Instagram / WhatsApp)
-=========================================== */
+/* Ссылки */
 .social-links-main {
   list-style: none;
   display: flex;
@@ -822,9 +826,7 @@ header {
   transform: scale(1.15);
 }
 
-/* ===========================================
-   Эффект печатающегося текста
-=========================================== */
+/* Печатающийся текст */
 .typing-container {
   font-size: 30px;
   font-weight: 600;
