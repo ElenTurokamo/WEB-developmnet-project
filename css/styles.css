@@ -425,6 +425,12 @@ header {
     box-sizing: border-box;
 }
 
+/* canvas#snowfall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+} */
 
 /* =========================================
                 ПОДВАЛ               
@@ -751,13 +757,14 @@ header {
 }
 
 .projectPlaceholder:hover {
-  transform: translateY(-4px);
+  transform: scale(1.005);
 }
 
 .greetingsPlaceholder {
-  position: relative; /* понадобится для псевдоэлемента */
-  overflow: hidden;   /* чтобы градиент не выходил за рамки */
-  background: linear-gradient(-120deg,rgba(255, 0, 111, 0.2) ,rgba(0, 221, 255, 0.2) , rgba(255, 128, 0, 0.2));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 /* ===========================================
@@ -801,10 +808,7 @@ header {
 }
 
 .download-CV:hover {
-  transform: translateY(-3px);
-  animation: 
-    border-light 3s ease-in-out infinite,
-    text-light 3s ease-in-out infinite;
+  transform: translateY(-5px);
 }
 
 /* Ссылки */
@@ -844,11 +848,79 @@ header {
   animation: blink 0.8s infinite;
 }
 
+.greetingsBlockRight img {
+  width: 200px;
+  height: 200px;
+  animation: drop-glow 10s ease infinite;
+  margin-right: 300px;
+}
+
+
 @keyframes blink {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
 
+
+/* ===========================================
+            БЛОК С ПРОЕКТАМИ
+=========================================== */
+.overviewPlaceholder {
+  background: rgba(255, 255, 255, 0.549);
+}
+
+.projectOverviewBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 35px;
+  width: 100%;
+  color: white;
+}
+
+.projectContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  justify-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.projectContainer li {
+  height: 300px;
+  width: 100%;
+  max-width: 500px; 
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.projectContainer li:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4); 
+}
+
+.projectContainer li a {
+  /* position: fixed; */
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  text-decoration: none;
+  transform: translate();
+}
+
+@media (max-width: 600px) {
+  .projectContainer {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* -------------------------------------
           ПЛЕЙСХОЛДЕР ПУСТЫШКА 
@@ -1048,11 +1120,11 @@ body.dark-theme #intro-screen {
 
 /* Мерцающий фон */
 @keyframes bg-light {
-  0%   { background-color: rgba(255, 116, 174, 0.2); }
-  25%  { background-color: rgba(255, 182, 122, 0.3); }
-  50%  { background-color: rgba(5, 114, 255, 0.3); }
-  75%  { background-color: rgba(122, 255, 200, 0.3); }
-  100% { background-color: rgba(255, 116, 174, 0.2); }
+  0%   { background-color: rgba(255, 116, 174, 0.5); }
+  25%  { background-color: rgba(255, 182, 122, 0.4); }
+  50%  { background-color: rgba(5, 114, 255, 0.5); }
+  75%  { background-color: rgba(122, 255, 200, 0.4); }
+  100% { background-color: rgba(255, 116, 174, 0.5); }
 }
 
 /* Мерцающие границы */
