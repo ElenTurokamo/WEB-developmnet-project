@@ -217,9 +217,11 @@ handlePlayClick() {
       record.classList.add('stop-spin');
 
       // === Шаг 2: Пластинка уезжает влево (в альбом) ===
-      record.classList.add('enter-album'); // CSS-анимация выезда
-      record.style.transition = 'transform 0.6s ease-in-out';
-      record.style.transform = 'translateX(-300px)'; // расстояние-заглушка
+      record.classList.add('enter-album'); 
+      record.style.transition = 'transform 0.6s ease-in-out, opacity 0.4s ease-in-out';
+      record.style.transform = 'translateX(-300px)';
+      record.style.opacity = '0';                           // ← исчезновение
+
 
       // После завершения уезда пластинки
       setTimeout(() => {
@@ -242,7 +244,8 @@ handlePlayClick() {
 
           // === Шаг 5: Новая пластинка выезжает справа и начинает крутиться ===
           setTimeout(() => {
-            record.style.transition = 'transform 1s ease-in-out';
+            record.style.opacity = '100';        
+            record.style.transition = 'transform 0.5s ease-in-out';
             record.style.transform = 'translateX(-400px)'; // старт справа
           
           // ждём кадр, чтобы применить переход
@@ -253,14 +256,16 @@ handlePlayClick() {
           setTimeout(() => {
             record.classList.remove('stop-spin', 'enter-album', 'exit-album');
             record.style.transition = 'none';
+            record.style.opacity = '1';                 // ← возвращаем видимость
             record.classList.add('spinning');
             record.style.animation = 'spin 20s linear infinite';
+
             this.albumArtContainer.classList.remove('enter-from-right');
             this.albumArtGlow.classList.remove('enter-from-right');
             this.isAnimating = false;
             }, 500);
           }, 500);
-        }, 500); // время ухода альбома
+        }, 600); // время ухода альбома
       }, 500); // время уезда пластинки
     }, 500); // время плавной остановки
   }
@@ -314,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // В реальном проекте здесь нужно будет использовать библиотеку для извлечения цвета.
   portfolioData[0].glowColor = 'rgba(247, 253, 255, 0.1)'; // Синий
   portfolioData[1].glowColor = 'rgba(255, 0, 0, 0.8)';   // Красный
-  portfolioData[2].glowColor = 'rgba(0, 255, 0, 0.8)';   // Зеленый
+  portfolioData[2].glowColor = 'rgba(255, 0, 208, 0.8)';   // Зеленый
 
   new PortfolioAnimationManager();
 });
