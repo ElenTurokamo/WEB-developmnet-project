@@ -446,11 +446,11 @@ header {
   padding: 60px 10%;
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  border-top: 1px solid #ddd;
 }
 
 /* --- LEFT SIDE --- */
 .footer-left {
+  position: relative;
   flex: 1;
   min-width: 280px;
 }
@@ -509,10 +509,11 @@ header {
 }
 
 .copyright {
+  position: absolute;
+  bottom: -180px;        /* приклей к нижней границе */
+  left: 0;          /* необязательно, но чаще всего нужно */
   font-size: 13px;
   opacity: 0.7;
-  margin-top: 10px;
-  bottom: 10%;
 }
 
 /* --- RIGHT SIDE --- */
@@ -542,17 +543,18 @@ header {
 .footer-contact-item {
   background: none;
   border: none;
-  color: #007ea7;
+  color: #ffffff;
   cursor: pointer;
   font-size: 14px;
   text-decoration: underline;
   padding: 0;
   transition: color 0.3s ease;
+  animation: drop-glow-light 6s ease-in-out infinite;
 }
 
 .footer-contact-item:hover {
-  color: #ffffff;
-  animation: drop-glow-light 4s ease-in-out infinite;
+  /* color: #ffffff; */
+  animation: text-light 4s ease-in-out infinite;
 }
 
 /* --- SOCIAL LINKS --- */
@@ -588,7 +590,7 @@ header {
 }
 
 .social-links a:hover svg {
-  fill: #fff;
+  animation: fill-light 4s ease-in-out infinite;
 }
 
 /* --- ADAPTIVE --- */
@@ -743,9 +745,9 @@ header {
               ПЛЕЙСХОЛДЕРЫ
 =========================================== */
 .projectPlaceholder {
-  width: 95%;
+  width: 99vw;
   min-height: 600px;
-  background: #121212;;
+  background: #121212;
   margin: 60px auto;
   border-radius: 14px;
 
@@ -824,7 +826,7 @@ header {
 }
 
 .social-links-main a:hover {
-  animation: text-light 3s ease-in-out infinite;
+  animation: text-light 4s ease-in-out infinite;
   transform: scale(1.15);
 }
 
@@ -1173,3 +1175,11 @@ body.dark-theme #intro-screen {
   100% { border-color: rgb(255, 116, 174); }
 }
 
+/* Мерцающее заполнение */
+@keyframes fill-light {
+  0%   { fill: rgb(255, 116, 174); }
+  25%  { fill: rgb(255, 182, 122); }
+  50%  { fill: rgb(5, 114, 255); }
+  75%  { fill: rgb(122, 255, 200); }
+  100% { fill: rgb(255, 116, 174); }
+}

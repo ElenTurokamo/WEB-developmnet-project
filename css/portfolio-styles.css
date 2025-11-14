@@ -26,7 +26,6 @@ body {
   overflow-x: hidden;
   
 }
-
 /* -------------------------------------
                   ШАПКА 
 -----------------------------------------*/
@@ -38,6 +37,7 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
   transition: all 0.3s ease;
+  border-bottom: solid 1px white;
 }
 
 .nav {
@@ -102,7 +102,7 @@ header {
   padding-bottom: 4px;   
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 1px;
   color: #ffffff;
   transition: opacity 0.3s, color 0.3s , transform 0.3s ease;
@@ -696,3 +696,110 @@ header {
     gap: 20px;
   }
 } */
+
+
+/* ========================================================
+                      АНИМАЦИИ
+======================================================== */
+
+/* Лёгкая тень свечение */
+@keyframes drop-glow-light {
+  0% {
+    filter: brightness(1)
+            drop-shadow(0 10px 2px rgba(255, 116, 174, 0.3))
+            drop-shadow(0 15px 2px rgba(122, 255, 200, 0.3));
+  }
+
+  25% {
+    filter: brightness(1)
+            drop-shadow(0 10px 3px rgba(255, 182, 122, 0.3))
+            drop-shadow(0 15px 3px rgba(122, 255, 200, 0.3));
+  }
+
+  50% {
+    filter: brightness(1)
+            drop-shadow(0 10px 4px rgba(5, 114, 255, 0.3))
+            drop-shadow(0 15px 4px rgba(122, 228, 255, 0.3));
+  }
+
+  75% {
+    filter: brightness(1)
+            drop-shadow(0 10px 3px rgba(255, 182, 122, 0.3))
+            drop-shadow(0 15px 3px rgba(122, 255, 200, 0.3));
+  }
+
+  100% {
+    filter: brightness(1)
+            drop-shadow(0 10px 2px rgba(255, 116, 174, 0.3))
+            drop-shadow(0 15px 2px rgba(122, 255, 200, 0.3));
+  }
+}
+
+/* Тень свечение */
+@keyframes drop-glow {
+  0% {
+    filter: brightness(1)
+            drop-shadow(0 15px 6px rgba(255, 116, 174, 0.5))
+            drop-shadow(0 15px 10px rgba(122, 255, 200, 0.5));
+  }
+
+  25% {
+    filter: brightness(1.05)
+            drop-shadow(0 15px 8px rgba(255, 182, 122, 0.5))
+            drop-shadow(0 15px 14px rgba(122, 255, 200, 0.5));
+  }
+
+  50% {
+    filter: brightness(1.1)
+            drop-shadow(0 15px 10px rgba(5, 114, 255, 0.5))
+            drop-shadow(0 15px 18px rgba(122, 228, 255, 0.5));
+  }
+
+  75% {
+    filter: brightness(1.05)
+            drop-shadow(0 15px 8px rgba(255, 182, 122, 0.5))
+            drop-shadow(0 15px 14px rgba(122, 255, 200, 0.5));
+  }
+
+  100% {
+    filter: brightness(1)
+            drop-shadow(0 15px 6px rgba(255, 116, 174, 0.5))
+            drop-shadow(0 15px 10px rgba(122, 255, 200, 0.5));
+  }
+}
+
+/* Мерцающий текст */
+@keyframes text-light {
+  0%   { color: rgb(255, 116, 174); }
+  25%  { color: rgb(255, 182, 122); }
+  50%  { color: rgb(5, 114, 255); }
+  75%  { color: rgb(122, 255, 200); }
+  100% { color: rgb(255, 116, 174); }
+}
+
+/* Мерцающий фон */
+@keyframes bg-light {
+  0%   { background-color: rgba(255, 116, 174, 0.5); }
+  25%  { background-color: rgba(255, 182, 122, 0.4); }
+  50%  { background-color: rgba(5, 114, 255, 0.5); }
+  75%  { background-color: rgba(122, 255, 200, 0.4); }
+  100% { background-color: rgba(255, 116, 174, 0.5); }
+}
+
+/* Мерцающие границы */
+@keyframes border-light {
+  0%   { border-color: rgb(255, 116, 174); }
+  25%  { border-color: rgb(255, 182, 122); }
+  50%  { border-color: rgb(5, 114, 255); }
+  75%  { border-color: rgb(122, 255, 200); }
+  100% { border-color: rgb(255, 116, 174); }
+}
+
+/* Мерцающее заполнение */
+@keyframes fill-light {
+  0%   { fill: rgb(255, 116, 174); }
+  25%  { fill: rgb(255, 182, 122); }
+  50%  { fill: rgb(5, 114, 255); }
+  75%  { fill: rgb(122, 255, 200); }
+  100% { fill: rgb(255, 116, 174); }
+}
