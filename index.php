@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="./css/styles.css">
-  <link rel="icon" href="../img/misc/site-icon.png" type="image/x-icon">
+  <link rel="icon" href="./img/misc/site-icon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TUROKAMO</title>
@@ -129,6 +129,7 @@
           <h3>Deus Weather</h3>
           <p>Weather bot with notifications and dynamic UI.</p>
           <a href="#">Open project →</a>
+          <button class="add-note-btn" onclick="openNotesModal('Deus Weather')">Добавить заметку</button>
         </div>
       </li>
 
@@ -139,6 +140,7 @@
           <h3>Hesith</h3>
           <p>Some description placeholder text.</p>
           <a href="#">Open project →</a>
+          <button class="add-note-btn" onclick="openNotesModal('Hesith')">Добавить заметку</button>
         </div>
       </li>
 
@@ -149,6 +151,7 @@
           <h3>Portfolio Landing</h3>
           <p>Clean animations + modern dark aesthetic.</p>
           <a href="#">Open project →</a>
+          <button class="add-note-btn" onclick="openNotesModal('Portfolio Landing')">Добавить заметку</button>
         </div>
       </li>
 
@@ -159,6 +162,7 @@
           <h3>Placeholder</h3>
           <p>Short project description.</p>
           <a href="#">Open project →</a>
+          <button class="add-note-btn" onclick="openNotesModal('Placeholder')">Добавить заметку</button>
         </div>
       </li>
 
@@ -225,6 +229,23 @@
 
 </footer>
 
+<div id="notes-modal" class="news-modal" style="display:none;">
+  <div class="news-modal-box">
+    <span class="close-btn" onclick="closeNotesModal()">&times;</span>
+    <div class="personal-notes">
+      <h2>Личные заметки</h2>
+      <form action="./php/notes.php" method="post">
+        <label for="note-title">Заголовок:</label><br>
+        <input type="text" id="note-title" name="note_title" required><br><br>
+        
+        <label for="note-description">Описание:</label><br>
+        <textarea id="note-description" name="note_description" rows="5" required></textarea><br><br>
+        
+        <button type="submit">Добавить заметку</button>
+      </form>
+    </div>
+  </div>
+</div>
 
   <!-- JAVA SCRIPT -->
     <script src="./js/news-block.js"></script>
@@ -237,9 +258,9 @@
     <script src="./js/deco-block.js"></script>
     <script src="./js/header-a-underline.js"></script>
     <script src="./js/main-typer.js"></script>
+    <script src="./js/notes.js"></script>
     <!-- <script src="./js/snowflakes.js"></script> -->
     <!-- <script src="./js/dark-mode-index.js"></script> -->
   </div>
-  
 </body>
 </html>

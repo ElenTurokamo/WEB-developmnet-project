@@ -625,122 +625,6 @@ header {
   color: #111;
 }
 
-/* === ГАЛЕРЕЯ === */
-.image-marquee {
-  flex: 1 1 60%;
-  overflow: hidden;
-  padding: 20px 0;
-  position: relative;
-}
-
-.marquee-content {
-  display: flex;
-  gap: 24px;
-  animation: scroll-left 12s linear infinite;
-}
-
-.marquee-content img {
-  height: 180px;
-  border-radius: 14px;
-  flex-shrink: 0;
-  object-fit: cover;
-  filter: brightness(0.95);
-  transition: transform 0.4s ease, filter 0.3s ease;
-}
-
-.marquee-content img:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* === БЛОК НОВОСТЕЙ === */
-.news-block {
-  flex: 1 1 35%;
-  background: #111;
-  color: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  height: fit-content;
-  max-height: 420px;
-  overflow-y: auto;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.news-block h2 {
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 6px;
-}
-
-/* Каждая новость */
-.news-item {
-  margin-bottom: 14px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  transition: 0.25s ease;
-  cursor: pointer;
-}
-
-.news-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.news-item:last-child {
-  margin-bottom: 0;
-}
-
-/* === МОДАЛЬНОЕ ОКНО === */
-.news-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.news-modal-box {
-  background: #1a1a1a;
-  padding: 30px;
-  border-radius: 16px;
-  max-width: 600px;
-  width: 90%;
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  overflow-y: auto;
-  max-height: 80%;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 18px;
-  font-size: 26px;
-  cursor: pointer;
-  color: #68bbe3;
-  transition: 0.3s;
-}
-
-.close-btn:hover {
-  color: #fff;
-} 
-
 /* ===========================================
               ПЛЕЙСХОЛДЕРЫ
 =========================================== */
@@ -1029,6 +913,131 @@ header {
   }
 }
 
+/* --- СТИЛИ КНОПКИ "ДОБАВИТЬ ЗАМЕТКУ" --- */
+.add-note-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.add-note-btn:hover {
+  border-color: rgb(255, 116, 174); /* Розовый из ваших анимаций */
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 116, 174, 0.3);
+  background: rgba(255, 116, 174, 0.05);
+}
+
+/* --- МОДАЛЬНОЕ ОКНО --- */
+.news-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 12, 19, 0.85); /* Цвет фона вашего body */
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.news-modal-box {
+  background: #16151c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.4s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: rgb(255, 116, 174);
+}
+
+.personal-notes h2 {
+  font-family: "P22 Cusp Square", sans-serif; /* Ваш фирменный шрифт */
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Поля ввода */
+.personal-notes label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.personal-notes input, 
+.personal-notes textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.personal-notes input:focus, 
+.personal-notes textarea:focus {
+  outline: none;
+  border-color: rgb(122, 255, 200); /* Бирюзовый из ваших анимаций */
+  background: rgba(122, 255, 200, 0.02);
+}
+
+/* Кнопка внутри формы */
+.personal-notes button[type="submit"] {
+  width: 100%;
+  background: rgb(122, 255, 200);
+  color: #0d0c13;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.personal-notes button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(122, 255, 200, 0.4);
+}
 
 /* =========================================
               ТЁМНАЯ ТЕМА             
