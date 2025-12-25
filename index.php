@@ -184,12 +184,24 @@
 <footer class="site-footer">
   
   <div class="footer-left">
-    <h2>Subscribe on updates</h2>
-    <div class="subscribe-box">
-      <input type="email" placeholder="Enter your email">
-      <button>Subscribe</button>
-    </div>
-    <p class="copyright">© 2025 Turokamo Prod. CO</p>
+      <h2>Subscribe on updates</h2>
+      
+      <form class="subscribe-box" action="./php/subscribe.php" method="POST">
+          <input type="email" name="user_email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+      </form>
+
+      <?php if(isset($_GET['status'])): ?>
+          <p class="subscribe-msg" style="margin-top: 10px; font-size: 0.8rem;">
+              <?php 
+                  if($_GET['status'] == 'success') echo "<span style='color: #7affc8;'>Success! You are subscribed.</span>";
+                  if($_GET['status'] == 'exists') echo "<span style='color: #ff74ae;'>This email is already in list.</span>";
+                  if($_GET['status'] == 'error') echo "<span style='color: #ff4a4a;'>Something went wrong.</span>";
+              ?>
+          </p>
+      <?php endif; ?>
+
+      <p class="copyright">© 2025 Turokamo Prod. CO</p>
   </div>
 
   <div class="footer-right">
