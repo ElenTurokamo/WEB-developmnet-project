@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
   <link rel="icon" href="../img/misc/site-icon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,8 @@
   <section id="intro-screen">
     <div class="intro-content">
       <h1 class="intro-title">TUROKAMO</h1>
-        <!-- <ul class="intro-nav-list">
-          <li><a href="/index.html">HOME</a></li>
+        <!-- <ul class="intro-nav-list"> 
+          <li><a href="/index.php">HOME</a></li>
           <li><a href="/html/portfolio.html">PORTFOLIO</a></li>
           <li><a href="/html/gallery.html">GALLERY</a></li>
           <li><a href="/html/anotherbutton.html">PHYSICS</a></li>
@@ -31,14 +31,14 @@
   <nav class="nav">
 
     <!-- Лого слева -->
-    <a href="index.html" class="logo"><img class="site-icon" src="/img/misc/logo.png" alt="logo"></a>
+    <a href="index.php" class="logo"><img class="site-icon" src="./img/misc/logo.png" alt="logo"></a>
 
     <!-- Центральные ссылки -->
     <ul class="nav-list header-center">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/html/portfolio.html">Portfolio</a></li>
-      <li><a href="/html/gallery.html">Gallery</a></li>
-      <li><a href="/html/anotherbutton.html">Blog</a></li>
+      <li><a href="./index.php">Home</a></li>
+      <li><a href="./html/portfolio.html">Portfolio</a></li>
+      <li><a href="./html/gallery.html">Gallery</a></li>
+      <li><a href="./html/anotherbutton.html">Blog</a></li>
     </ul>
 
     <!-- Соцсети справа -->
@@ -59,7 +59,7 @@
   <main>
 <section class="placeholder-top">
   <div class="decorative-placeholder">
-    <img src="/img/misc/Deco-block.png" alt="">
+    <img src="./img/misc/Deco-block.png" alt="">
   </div>
   <div class="content">
   </div>
@@ -112,7 +112,7 @@
     </ul>
   </div>
   <div class="greetingsBlockRight">
-    <img src="/img/misc/Site-icon.png">
+    <img src="./img/misc/Site-icon.png">
   </div>
 </div>
 
@@ -227,18 +227,18 @@
 
 
   <!-- JAVA SCRIPT -->
-    <script src="../js/news-block.js"></script>
-    <script src="../js/main-scroller.js"></script>
-    <script src="../js/footer.js"></script>
-    <script src="../js/search-bar.js"></script>
-    <script src="../js/go-up-button.js"></script>
-    <script src="/js/parallax-scroll.js"></script>
-    <script src="/js/hide-intro.js"></script>
-    <script src="/js/deco-block.js"></script>
-    <script src="/js/header-a-underline.js"></script>
-    <script src="/js/main-typer.js"></script>
-    <!-- <script src="/js/snowflakes.js"></script> -->
-    <!-- <script src="/js/dark-mode-index.js"></script> -->
+    <script src="./js/news-block.js"></script>
+    <script src="./js/main-scroller.js"></script>
+    <script src="./js/footer.js"></script>
+    <script src="./js/search-bar.js"></script>
+    <script src="./js/go-up-button.js"></script>
+    <script src="./js/parallax-scroll.js"></script>
+    <script src="./js/hide-intro.js"></script>
+    <script src="./js/deco-block.js"></script>
+    <script src="./js/header-a-underline.js"></script>
+    <script src="./js/main-typer.js"></script>
+    <!-- <script src="./js/snowflakes.js"></script> -->
+    <!-- <script src="./js/dark-mode-index.js"></script> -->
   </div>
   
 </body>
